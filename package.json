@@ -1,0 +1,23 @@
+{
+  "name": "mswjs-demo",
+  "version": "1.0.0",
+  "description": "A demonstration of how Mock Service Workers JS works",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/spektraldevelopment/mswjs-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/spektraldevelopment/mswjs-demo/issues"
+  },
+  "homepage": "https://github.com/spektraldevelopment/mswjs-demo#readme",
+  "devDependencies": {
+    "msw": "^2.7.3"
+  }
+}
