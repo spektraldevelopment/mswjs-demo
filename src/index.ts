@@ -4,7 +4,7 @@ server.listen();
 
 // This is a simple Node.js application that
 // does a network request and prints the response.
-function app() {
+const app = () => {
   fetchUser();
   fetchAllUsers();
 }

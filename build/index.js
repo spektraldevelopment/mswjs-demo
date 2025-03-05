@@ -16,10 +16,10 @@ const server_1 = __importDefault(require("./mocks/server"));
 server_1.default.listen();
 // This is a simple Node.js application that
 // does a network request and prints the response.
-function app() {
+const app = () => {
     fetchUser();
     fetchAllUsers();
-}
+};
 const fetchUser = () => __awaiter(void 0, void 0, void 0, function* () {
     const response = yield fetch("https://example.com/user");
     const user = yield response.json();

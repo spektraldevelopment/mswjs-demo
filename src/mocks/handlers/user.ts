@@ -1,6 +1,6 @@
-import { http, HttpResponse } from "msw";
+import { http, HttpResponse, RequestHandler } from "msw";
 
-export const userHandlers = [
+export const userHandlers: RequestHandler[] = [
   // Intercept "GET https://example.com/user" requests...
   http.get("https://example.com/user", (): HttpResponse => {
     // ...and respond to them using this JSON response.
@@ -9,5 +9,5 @@ export const userHandlers = [
       firstName: "John",
       lastName: "Maverick",
     });
-  })
+  }),
 ];
