@@ -6,6 +6,7 @@ server.listen();
 // does a network request and prints the response.
 const app = () => {
   fetchUser();
+  fetchTestUser();
   fetchAllUsers();
 }
 
@@ -13,6 +14,12 @@ const fetchUser = async () => {
   const response = await fetch("https://example.com/user");
   const user = await response.json();
   console.log("USER is: ", user);
+};
+
+const fetchTestUser = async () => {
+  const response = await fetch("https://example.com/user/123");
+  const user = await response.json();
+  console.log("TEST USER is: ", user);
 };
 
 const fetchAllUsers = async () => {
