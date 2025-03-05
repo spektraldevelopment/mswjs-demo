@@ -11,5 +11,5 @@ exports.userHandlers = [
             firstName: "John",
             lastName: "Maverick",
         });
-    })
+    }),
 ];
