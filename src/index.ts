@@ -10,6 +10,7 @@ const app = async () => {
   fetchAllUsers();
   await postNewUser();
   putUser();
+  deleteUser();
 }
 
 const log = (message: string, obj: {} | []) => {
@@ -67,5 +68,18 @@ const putUser = async () => {
   const updatedUser = await response.json();
   log(`UPDATED USER is: `, updatedUser);
 };
+
+const deleteUser = async () => {
+  const response = await fetch("https://example.com/user/c7b3d8e0-5e0b-4b0f-8b3a-3b9f4b3d3b3e", {
+    method: "DELETE",
+  });
+  const deletedUser = await response.json();
+  log(`DELETED USER is: `, deletedUser);
+
+  const res = await fetch("https://example.com/users");
+  const { users } = await res.json();
+
+  log(`ALL USERS are now: `, users);
+}
 
 app();

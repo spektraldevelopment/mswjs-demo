@@ -55,4 +55,19 @@ export const userHandlers: RequestHandler[] = [
 
     return HttpResponse.json(updatedUser);
   }),
+  http.delete('https://example.com/user/:id', ({ params }): HttpResponse => {
+    const { id } = params;
+
+    // Find user by ID in users array...
+    const userIndex = users.findIndex((user) => user.id === id);
+
+    // * Remove user from users array...
+    users.splice(userIndex, 1);
+
+    return HttpResponse.json({ id });
+  }),
+  http.get("https://example.com/users", (): HttpResponse => {
+    // ...and respond to them using this JSON response.
+    return HttpResponse.json({ users });
+  }),
 ];
