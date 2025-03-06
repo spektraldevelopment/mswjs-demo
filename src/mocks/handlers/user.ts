@@ -40,16 +40,19 @@ export const userHandlers: RequestHandler[] = [
     // * Respond with the new user.
     return HttpResponse.json(newUser);
   }),
-  // http.put('https://example.com/user/:id', async ({ request, params }): Promise<HttpResponse> => {
-  //   const { id } = params;
-  //   const req = await request.json();
+  http.put('https://example.com/user/:id', async ({ request, params }): Promise<HttpResponse> => {
+    const { id } = params;
+    const req = await request.json();
 
-  //   // Find user by ID in users array...
-  //   const userIndex = users.findIndex((user) => user.id === id);
+    // Find user by ID in users array...
+    const userIndex = users.findIndex((user) => user.id === id);
 
-  //   // Update user in the users array...
-  //   //users[userIndex] = updatedUser;
+    // * Extract updated user from request body...
+    const updatedUser: User = req as User;
 
-  //   //return HttpResponse.json(updatedUser);
-  // }),
+    // Update user in the users array...
+    users[userIndex] = updatedUser;
+
+    return HttpResponse.json(updatedUser);
+  }),
 ];
