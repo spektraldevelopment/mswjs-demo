@@ -9,6 +9,7 @@ const app = async () => {
   fetchTestUser();
   fetchAllUsers();
   await postNewUser();
+  putUser();
 }
 
 const log = (message: string, obj: {} | []) => {
@@ -24,7 +25,7 @@ const fetchUser = async () => {
 };
 
 const fetchTestUser = async () => {
-  const response = await fetch("https://example.com/user/123");
+  const response = await fetch("https://example.com/user/123456");
   const user = await response.json();
   log(`TEST USER is: `, user);
 };
@@ -49,6 +50,22 @@ const postNewUser = async () => {
   });
   const newUser = await response.json();
   log(`NEW USER is: `, newUser);
+};
+
+const putUser = async () => {
+  const response = await fetch("https://example.com/user/123456", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      id: "123456",
+      firstName: "Foobar",
+      lastName: "FooFoo",
+    }),
+  });
+  const updatedUser = await response.json();
+  log(`UPDATED USER is: `, updatedUser);
 };
 
 app();
