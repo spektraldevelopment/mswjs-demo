@@ -1,8 +1,4 @@
-import { setupServer, SetupServerApi } from "msw/node";
-import { handlers } from "./handlers";
+import { setupServer } from 'msw/node';
+import { handlers } from './handlers';
 
-// console.log("Handlers List: ", handlers);
-
-const server: SetupServerApi = setupServer(...handlers);
-
-export default server;
+export const server = setupServer(...handlers);

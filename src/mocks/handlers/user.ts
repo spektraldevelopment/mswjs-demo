@@ -1,14 +1,9 @@
 import { http, HttpResponse, RequestHandler } from "msw";
+import { User } from "../../interfaces";
 import data from "../data/users.json";
 
-interface User {
-  id: string;
-  firstName: string;
-  lastName: string;
-}
-
 // * Assign data to a new object in order to avoid mutation.
-const users = [...data.users];
+const users: User[] = [...data.users];
 
 export const userHandlers: RequestHandler[] = [
   // Intercept "GET https://example.com/user" requests...
@@ -27,34 +22,38 @@ export const userHandlers: RequestHandler[] = [
 
     return HttpResponse.json(user);
   }),
-  http.post('https://example.com/user', async ({ request }): Promise<HttpResponse> => {
+  // http.post('https://example.com/user', async ({ request }): Promise<HttpResponse> => {
 
-    const req = await request.json();
+  //   const req = await request.json();
 
-    // * Extract new user from request body...
-    const newUser: User = req as User;
+  //   // * Extract new user from request body...
+  //   const newUser: User = req as User;
 
-    // * Add new user to users array...
-    users.push(newUser);
+  //   // * Add new user to users array...
+  //   if (newUser.id && newUser.firstName && newUser.lastName) {
+  //     users.push(newUser);
+  //   } else {
+  //     throw new Error("Invalid user data");
+  //   }
 
-    // * Respond with the new user.
-    return HttpResponse.json(newUser);
-  }),
-  http.put('https://example.com/user/:id', async ({ request, params }): Promise<HttpResponse> => {
-    const { id } = params;
-    const req = await request.json();
+  //   // * Respond with the new user.
+  //   return HttpResponse.json(newUser);
+  // }),
+  // http.put('https://example.com/user/:id', async ({ request, params }): Promise<HttpResponse> => {
+  //   const { id } = params;
+  //   const req = await request.json();
 
-    // Find user by ID in users array...
-    const userIndex = users.findIndex((user) => user.id === id);
+  //   // Find user by ID in users array...
+  //   const userIndex = users.findIndex((user) => user.id === id);
 
-    // * Extract updated user from request body...
-    const updatedUser: User = req as User;
+  //   // * Extract updated user from request body...
+  //   const updatedUser: User = req as User;
 
-    // Update user in the users array...
-    users[userIndex] = updatedUser;
+  //   // Update user in the users array...
+  //   users[userIndex] = updatedUser;
 
-    return HttpResponse.json(updatedUser);
-  }),
+  //   return HttpResponse.json(updatedUser);
+  // }),
   http.delete('https://example.com/user/:id', ({ params }): HttpResponse => {
     const { id } = params;
 
