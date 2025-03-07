@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";    
 import fetchUsersReducer from "./fetchUsersReducer";
+import findUserReducer from "./findUserReducer";
 
 const reducers = combineReducers({
-    users: fetchUsersReducer,
+    fetchUsers: fetchUsersReducer,
+    findUser: findUserReducer
 });
 
 export default reducers;

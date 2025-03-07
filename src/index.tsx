@@ -8,7 +8,9 @@ const el = document.getElementById("root");
 const root = ReactDOM.createRoot(el!);
 
 const startWorker = async () => {
-    await worker.start();
+    await worker.start({
+        onUnhandledRequest: 'bypass'
+    });
     console.log("Worker started");
 
     root.render(

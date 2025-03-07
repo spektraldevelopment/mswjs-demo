@@ -7,7 +7,7 @@ const UserList: React.FC = () => {
 
   const [users, setUsers] = useState<User[]>([]);
   const { fetchUsers } = useActions();
-  const { data, error, loading } = useTypedSelector((state) => state.users);
+  const { data, error, loading } = useTypedSelector((state) => state.fetchUsers);
 
   useEffect(() => {
     fetchUsers();
@@ -24,7 +24,7 @@ const UserList: React.FC = () => {
     return users.map((user) => {
       return (
         <li key={user.id}>
-          {user.firstName} {user.lastName}
+          Name: {user.firstName} {user.lastName} ID: {user.id}
         </li>
       );
     });

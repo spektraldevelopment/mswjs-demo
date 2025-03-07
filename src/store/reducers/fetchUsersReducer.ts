@@ -1,5 +1,5 @@
 import { ActionTypes } from '../action-types';
-import { Action } from '../actions';
+import { UsersAction } from '../actions';
 import { User } from '../../interfaces';
 
 interface FetchUsersState {
@@ -16,7 +16,7 @@ const initialState = {
 
 const reducer = (
     state: FetchUsersState = initialState,
-    action: Action
+    action: UsersAction
 ): FetchUsersState => {
     switch (action.type) {
         case ActionTypes.FETCH_USERS:
